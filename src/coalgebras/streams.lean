@@ -118,16 +118,10 @@ def proof_stream_is_final {α : Types.C₀} : final_coalgebra (stream_functor α
         induction n with n IH,
         case nat.zero{ -- Case n = 0
           rw unfolds,
-          -- have h1 : f_morphism x 0 = (stream_coalgebra.morphism (f_morphism x)).fst:= by refl,
-          -- simp [h1],
           have h : f_morphism x 0 = (Types.compose prod.fst (Types.compose stream_coalgebra.morphism f_morphism)) x := by refl,
           simp [h],
           rw [f_proof],
           refl,
-          -- have h3 : Types.compose prod.fst (Types.compose ((stream_functor α).map_hom f_morphism) A.morphism) x 
-          --   = (A.morphism x).fst := by refl,
-          -- simp [h3],
-
         },
         case nat.succ{ -- Case n > 0
           -- rw [unfolds],
