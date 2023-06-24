@@ -9,7 +9,7 @@ namespace category_theory
 -- We can represent natural numbers with it.
 -- We can imagine that the Singleton element is 0 and X is succ (ℕ)
 -- which represents a successor of the previous element (i.e. succ (0) is 1). 
-def maybe_algebra_Functor : functor Set Set :=
+def maybe_algebra_Functor : Set ⇒ Set :=
 {
   -- Objects are mapped to 1 + X
   map_obj := λ X, Either Singleton X,

@@ -12,6 +12,9 @@
 --      \lambda        λ
 --      \imp           →
 --      \comp          ∘
+--      \dot           ⬝ 
+--      \oo            ⊚
+--      \times         ×
 --
 --      \Pi            Π
 --      \Sigma         Σ

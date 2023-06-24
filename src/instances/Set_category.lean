@@ -7,7 +7,7 @@ open category_theory
 def Set : category :=
 {
   -- Type 0 in Lean is essentialy a set.
-  C₀ := Type 0,
+  C₀ := Type*,
 
   -- A morphism between two sets maps the elements from one set
   -- to the other, same as what a function between types does.

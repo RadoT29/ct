@@ -1,8 +1,7 @@
 # Category Theory Library in Lean 3
 
 ## Description
-The aim of this project is to make a computer checked library of definitions, theorems, proofs and examples in the field of Category Theory.
-The language used is Lean 3, more technical details can be found later in this document.
+This is a computer-checked library of definitions, theorems, proofs and examples in the field of category theory in Lean 3.
 
 ## Installation
 To run this project, you must install the following tools:
@@ -17,20 +16,7 @@ leanproject build
 ```
 You should see it build without any problems.
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-### Gitlab CI/CD
+## Gitlab CI/CD
 
  Currently there is no docker image for LEAN 4.
  This means we cannot easily set up the Gitlab Pipeline for it.
@@ -51,9 +37,11 @@ You can also document commands to lint the code or run tests. These steps help t
   - Benedikt Ahrens
   - Lucas Escot
 
-## License
-!! what license do we have? !!
-
 ## Project status
-The project is currently developed as a Research Project for a University course of the same name, given by TU Delft.
+The project was developed as a Research Project for a university course of the same name, given by TU Delft.
 There are currently no plans beyond this course.
+
+## License
+Copyright (C) 2023 by Ciprian Stanciu, Csanád Farkas, Markus Orav, Pedro Brandão Brandao de Araujo, Rado Todorov 
+
+Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted.

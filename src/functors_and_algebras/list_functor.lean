@@ -7,7 +7,7 @@ namespace category_theory
 -- This functor can be used for a List Algebra.
 -- We can imagine that Nil is 1 (i.e a singleton element) and 𝔸 × X is Cons 𝔸 X,
 -- where 𝔸 is the head of the list with Type 𝔸 and X is the tail.
-def list_algebra_functor (A : Set.C₀) : functor Set Set :=
+def list_algebra_functor (A : Set.C₀) : Set ⇒ Set :=
 {
   -- Objects are mapped to 1 + (𝔸 × X)
   map_obj := λ X, Either Singleton (Pair A X),

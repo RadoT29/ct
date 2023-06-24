@@ -5,7 +5,7 @@ import adjunctions.unit_counit
 namespace category_theory
 
 -- Convert an adjunction defined via homset bijection to unit-counit adjunction
-def adjunction_hom_to_unit {C D} {L : functor C D} {R} (a : adjunction_hom L R)
+def adjunction_hom_to_unit {𝒞 𝒟} {L : 𝒞 ⇒ 𝒟} {R} (a : adjunction_hom L R)
 : adjunction_unit L R :=
 {
   -- the unit η can be constructing by using φ c on the identity morphism for L c,
@@ -13,14 +13,14 @@ def adjunction_hom_to_unit {C D} {L : functor C D} {R} (a : adjunction_hom L R)
   -- natural transformation from Id C to R⬝L.
   η := {
     -- we construct the map as explained above
-    α := λ c, by exact a.φ (D.id (L c)),
+    α := λ c, by exact a.φ (𝒟.id (L c)),
     -- and prove that it preserves the naturality condition
     naturality_condition := 
       begin
         intros c' c h,
         erw a.naturality_d,            -- use naturality in 𝒟
-        erw D.left_id,                 -- eliminate id
-        rw ← D.right_id (L.map_hom h), -- introduce id on other side
+        erw 𝒟.left_id,                 -- eliminate id
+        rw ← 𝒟.right_id (L.map_hom h), -- introduce id on other side
         erw a.naturality_c,            -- use naturality in 𝒞
         refl,
       end,
@@ -29,15 +29,15 @@ def adjunction_hom_to_unit {C D} {L : functor C D} {R} (a : adjunction_hom L R)
   -- inverse of the φ bijection (φr) and mapping 𝒞(R d, R d) to 𝒟(L (R d), d).
   -- (a natural transformation from L⬝R to Id D).
   ε := {
-    α := λ d, by exact a.φr (C.id (R d)),
+    α := λ d, by exact a.φr (𝒞.id (R d)),
     -- proof is analogous (also dual) to η
     naturality_condition :=
       begin
         intros d d' g,
         apply symm,
         erw a.naturality_cr,
-        erw C.right_id,
-        rw ← C.left_id (R.map_hom g),
+        erw 𝒞.right_id,
+        rw ← 𝒞.left_id (R.map_hom g),
         erw adjunction_hom.naturality_dr,
         refl,
       end,
@@ -48,7 +48,7 @@ def adjunction_hom_to_unit {C D} {L : functor C D} {R} (a : adjunction_hom L R)
       intro c,
       simp,
       erw a.naturality_cr,
-      erw C.right_id,
+      erw 𝒞.right_id,
       apply a.retr,
     end,
   id_R := 
@@ -56,7 +56,7 @@ def adjunction_hom_to_unit {C D} {L : functor C D} {R} (a : adjunction_hom L R)
       intro d,
       simp,
       erw a.naturality_d,
-      erw D.left_id,
+      erw 𝒟.left_id,
       apply a.sect,
     end,
 }
