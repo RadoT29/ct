@@ -1,6 +1,4 @@
-import ..functors.functor ..universal_properties
-
-universe w
+import ..functors.functor
 
 namespace category_theory
 

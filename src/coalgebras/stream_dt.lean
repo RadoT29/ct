@@ -1,19 +1,3 @@
-universe u
-
--- inductive stream (α : Type*) : Type*
--- | cons (head : α) (tail : stream) : stream
-
--- def head {α : Type*} (s : stream α) : α :=
--- match s with
--- | cons h _ := h
--- end
-
--- def tail {α : Type*} (s : stream α) : stream α :=
--- match s with
--- | cons _ t := t
--- end
-
-
 def stream (α : Type*) := nat → α
 
 def cons {α : Type*} (a : α) (s : stream α) : stream α

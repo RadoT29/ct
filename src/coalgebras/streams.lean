@@ -1,8 +1,6 @@
 -- Example
 -- Stream
-import .final_coalgebra ..instances.types_category ..universal_properties .stream_dt 
-
-universe u
+import .final_coalgebra ..instances.types_category .stream_dt 
 
 namespace category_theory
 

@@ -24,7 +24,7 @@ match s with
 end
 
 
-def binary_tree_functor (α : Type u) : functor Types Types :=
+def binary_tree_functor (α : Type*) : functor Types Types :=
 {
   map_obj := λ X, α × X × X,
   map_hom := 
