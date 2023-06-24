@@ -1,60 +1,20 @@
 -- Example
 -- Stream
-import .final_coalgebra ..instances.types_category .stream_dt 
+import .stream_dt .stream_functor .final_coalgebra 
 
 namespace category_theory
 
-def stream_functor (α : Type*) : functor Types Types :=
-{
-  map_obj := λ X, α × X,
-  map_hom := λ X Y f, λ p, (p.fst, f p.snd),
-  id := 
-    begin
-      intro X,
-      funext x,
-      cases x,
-      refl
-    end,
-  comp := 
-    begin
-      intros X Y Z f g,
-      funext p,
-      cases p with a x,
-      simp,
-      refl
-    end
-}
-
-def stream_coalgebra (α : Types.C₀) : coalgebra (stream_functor α) :=
--- def stream_coalgebra (α : Types.C₀) : (coalgebra_category (stream_functor α)).C₀ :=
+def stream_coalgebra (α : Type) : coalgebra (stream_functor α) :=
 {
   object := stream α,
   morphism := λ s, (head s, tail s)
 }
 
 lemma unfold_head {S : Types.C₀} {f : Types.hom S ((stream_functor S).map_obj S)} {x:S} :
-  head (unfolds f x) = (f x).fst :=
-begin
-  -- unfold unfolds,
-  -- simp [head],
-  refl,
-end
+  head (unfolds f x) = (f x).fst := by refl
 
-axiom unfold_tail {α β  : Types.C₀} {f : α → β × α} {x:α} :
-  tail (unfolds f x) = unfolds f (f x).snd
-
--- lemma unfold_tail {α β  : Types.C₀} {f : α → β × α} {x:α} :
---   tail (unfolds f x) = unfolds f (f x).snd :=
--- begin
---   -- unfold unfolds,
---   -- simp [unfolds, tail, corec', corec, map, nth],
---   -- simp [function.comp],
---   -- simp [iterate],
---   -- funext,
-  
---   refl,
-
--- end
+lemma unfold_tail {α β  : Types.C₀} {f : α → β × α} {x:α} :
+  tail (unfolds f x) = unfolds f (f x).snd := by refl
 
 def unfold_homomorphism  {α : Types.C₀} (A : coalgebra (stream_functor α)) : f_coalgebra_homomorphism A (stream_coalgebra α) := 
 {
@@ -71,28 +31,16 @@ def unfold_homomorphism  {α : Types.C₀} (A : coalgebra (stream_functor α)) :
     ((stream_functor α).map_hom (unfolds A.morphism)) (A.morphism x)
      := by refl,
     rw simp_right,
-    
-    -- -- funext n,
-    -- cases x,
-    -- cases (A.morphism x) with a s,
 
 
     have h1 : (stream_coalgebra α).morphism (unfolds A.morphism x) 
     = ((A.morphism x).fst, tail (unfolds A.morphism x))  := by refl,
     rw [h1],
-
-    -- have h2 : (head (unfolds A.morphism x), tail (unfolds A.morphism x))
-    --   = ((A.morphism x).fst, tail (unfolds A.morphism x)) := by refl,
-    -- rw [h2],
-
-    -- unfold tail,
-    -- cases (A.morphism x) with a s,
-    -- simp,
     
 
-    have h3 : (stream_functor α).map_hom (unfolds A.morphism) (A.morphism x)
+    have h2 : (stream_functor α).map_hom (unfolds A.morphism) (A.morphism x)
       = ((A.morphism x).fst, (unfolds A.morphism (A.morphism x).snd)) := by refl,
-    rw [h3],
+    rw [h2],
 
     rw unfold_tail,
 
