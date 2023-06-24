@@ -3,10 +3,10 @@ namespace category_theory
 
 -- Creates the identity functor of a category.
 -- This maps each object and morphism to itself.
-def Id (C : category) : functor C C :=
+def Id (𝒞 : category) : 𝒞 ⇒ 𝒞 :=
 {
-  map_obj := λ X : C, X,
-  map_hom := λ X Y : C, λ f, f,
+  map_obj := λ X : 𝒞, X,
+  map_hom := λ X Y : 𝒞, λ f, f,
   id :=
     begin
       intro X,

@@ -14,13 +14,13 @@ namespace category_theory
 
 -- The naturality conditions are defined for all pairs ⟨c, d⟩ of objects and
 -- arbitrary morphism dₕ in 𝒟(L c, d).
-structure adjunction_hom {C D : category} (L : functor C D) (R : functor D C) :=
-(φ : Π {c : C} {d : D}, (D.hom (L c) d) → (C.hom c (R d)))
+structure adjunction_hom {𝒞 𝒟 : category} (L : 𝒞 ⇒ 𝒟) (R : 𝒟 ⇒ 𝒞) :=
+(φ : Π {c : 𝒞} {d : 𝒟}, (𝒟.hom (L c) d) → (𝒞.hom c (R d)))
 
 -- Homset mapping should be isomorphic.
-(φr : Π {c : C} {d : D}, (C.hom c (R d)) → (D.hom (L c) d))
-(sect : ∀ {c : C} {d : D} (h : C.hom c (R d)), (φ ∘ φr) h = h)
-(retr : ∀ {c : C} {d : D} (k : D.hom (L c) d), (φr ∘ φ) k = k)
+(φr : Π {c : 𝒞} {d : 𝒟}, (𝒞.hom c (R d)) → (𝒟.hom (L c) d))
+(sect : ∀ {c : 𝒞} {d : 𝒟} (h : 𝒞.hom c (R d)), (φ ∘ φr) h = h)
+(retr : ∀ {c : 𝒞} {d : 𝒟} (k : 𝒟.hom (L c) d), (φr ∘ φ) k = k)
 
 -- Naturality in c means this diagram commutes for all morphisms h : 𝒞(c', c):
 --              φ
@@ -30,8 +30,8 @@ structure adjunction_hom {C D : category} (L : functor C D) (R : functor D C) :=
 --
 --   𝒟(L c', d) → 𝒞(c', R d)
 --              φ
-(naturality_c : ∀ (c : C) (d : D) (dₕ : D.hom (L c) d),
-              ∀ {c' : C} (h : C.hom c' c), C.compose (φ dₕ) h = φ (D.compose dₕ (L.map_hom h)))
+(naturality_c : ∀ (c : 𝒞) (d : 𝒟) (dₕ : 𝒟.hom (L c) d),
+              ∀ {c' : 𝒞} (h : 𝒞.hom c' c), 𝒞.compose (φ dₕ) h = φ (𝒟.compose dₕ (L.map_hom h)))
 
 -- While naturality in d means this diagram commutes for all morphisms k : 𝒟(d, d'):
 --              φ
@@ -41,8 +41,8 @@ structure adjunction_hom {C D : category} (L : functor C D) (R : functor D C) :=
 --
 --   𝒟(L c, d') → 𝒞(c, R d')
 --              φ
-(naturality_d : ∀ (c : C) (d : D) (dₕ : D.hom (L c) d),
-              ∀ {d' : D} (k : D.hom d d'), C.compose (R.map_hom k) (φ dₕ) = φ (D.compose k dₕ))
+(naturality_d : ∀ (c : 𝒞) (d : 𝒟) (dₕ : 𝒟.hom (L c) d),
+              ∀ {d' : 𝒟} (k : 𝒟.hom d d'), 𝒞.compose (R.map_hom k) (φ dₕ) = φ (𝒟.compose k dₕ))
 
 -- Since the mapping is isomorphic, we also have duals for the naturality properties, where
 -- the arrow corresponding to φ is reversed.
@@ -55,8 +55,8 @@ structure adjunction_hom {C D : category} (L : functor C D) (R : functor D C) :=
 --
 --   𝒞(c', R d) → 𝒟(L c', d)
 --              φr
-(naturality_cr : ∀ (c : C) (d : D) (cₕ : C.hom c (R d)),
-              ∀ {c' : C} (h : C.hom c' c), D.compose (φr cₕ) (L.map_hom h) = φr (C.compose cₕ h))
+(naturality_cr : ∀ (c : 𝒞) (d : 𝒟) (cₕ : 𝒞.hom c (R d)),
+              ∀ {c' : 𝒞} (h : 𝒞.hom c' c), 𝒟.compose (φr cₕ) (L.map_hom h) = φr (𝒞.compose cₕ h))
 
 --
 -- ∀ k : 𝒟(d, d'):
@@ -67,7 +67,7 @@ structure adjunction_hom {C D : category} (L : functor C D) (R : functor D C) :=
 --
 --   𝒞(c, R d') → 𝒟(L c, d')
 --              φr
-(naturality_dr : ∀ (c : C) (d : D) (cₕ : C.hom c (R d)),
-              ∀ {d' : D} (k : D.hom d d'), D.compose k (φr cₕ) = φr (C.compose (R.map_hom k) cₕ))
+(naturality_dr : ∀ (c : 𝒞) (d : 𝒟) (cₕ : 𝒞.hom c (R d)),
+              ∀ {d' : 𝒟} (k : 𝒟.hom d d'), 𝒟.compose k (φr cₕ) = φr (𝒞.compose (R.map_hom k) cₕ))
 
 end category_theory

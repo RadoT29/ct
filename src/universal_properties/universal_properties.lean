@@ -1,4 +1,4 @@
-import .category
+import category
 
 namespace category_theory
 
