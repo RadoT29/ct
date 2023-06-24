@@ -67,13 +67,13 @@ begin
   rw [C.right_id],
 end 
 
-inductive List (α: Type) : Type
-  | nil : List
-  | cons (head: α) (tail: List) : List
+-- inductive List (α: Type) : Type
+--   | nil : List
+--   | cons (head: α) (tail: List) : List
 
-inductive Maybe (α : Type)
-  | none : Maybe
-  | some : α → Maybe
+-- inductive Maybe (α : Type)
+--   | none : Maybe
+--   | some : α → Maybe
 
 inductive BTree (α : Type)
   | leaf (el : α) : BTree

@@ -3,6 +3,7 @@ import functors_and_algebras.tools
 import .initial_list_algebra
 import functors_and_algebras.list_functor
 import functors_and_algebras.fusion_property
+import instances.functors.List_functor
 
 open category_theory
 -- This file presents a proof that applying `filter`, followed by `length` on lists
