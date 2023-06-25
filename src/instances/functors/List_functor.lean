@@ -1,5 +1,6 @@
 import instances.Set_category
 import functors.functor
+import functors_and_algebras.tools
 
 open category_theory
 

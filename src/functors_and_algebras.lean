@@ -1,0 +1,7 @@
+import functors_and_algebras.algebra_category
+import functors_and_algebras.f_algebra
+import functors_and_algebras.list_functor
+import functors_and_algebras.maybe_functor
+import functors_and_algebras.fusion_property
+import functors_and_algebras.catamorphism
+import functors_and_algebras.lambek_theorem
